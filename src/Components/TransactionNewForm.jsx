@@ -12,7 +12,7 @@ function TransactionNewForm() {
     category: "",
   });
 
-    const navigte = useNavigate();
+    const navigate = useNavigate();
     const handleTextChange = (event) => {
       setTransaction({ ...transaction, [event.target.id]: event.target.value });
     };
