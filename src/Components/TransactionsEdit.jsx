@@ -59,7 +59,7 @@ function TransactionsEdit() {
           value={bookmark.item_name}
           type="text"
           onChange={handleTextChange}
-          placeholder="Name of Website"
+          placeholder="Name of Transaction"
           required
           />
           <input type="submit" />
