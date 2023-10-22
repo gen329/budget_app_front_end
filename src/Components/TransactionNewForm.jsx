@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useParams, useNavigate } from "react-router-dom";
+import TransactionDetails from './TransactionDetails';
 const API = import.meta.env.VITE_BASE_URL
 
 function TransactionNewForm() {
@@ -31,10 +32,8 @@ function TransactionNewForm() {
 
       const response = await fetch(`${API}/transactions`, httpOptions);
       if (!response.ok) { throw new Error("Network response failed!!") }
-
       const data = await response.json();
-      console.log(data);
-      alert(`${transaction.item_name} was successfully added to the budget!`);
+      alert(" Transaction was successfully added to the budget!");
       navigate('/transactions');
     } catch (error) {
       console.error(error);
@@ -46,7 +45,6 @@ function TransactionNewForm() {
       addTransaction();
     };
     
-    console.log(transaction.item_name)
     return (
       <div className="New">
     <form onSubmit={handleSubmit}>
