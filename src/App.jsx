@@ -7,6 +7,7 @@ import Home from "./Pages/Home";
 import Index from "./Pages/Index";
 import New from "./Pages/New";
 import Show from "./Pages/Show";
+import Edit from "./Pages/Edit";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/transactions" element={<Index />} />
           <Route path="/transactions/new" element={<New />} />
           <Route path="/transactions/:index" element={<Show />} />
+          <Route path="/transactions/:index/edit" element={<Edit />} />
         </Routes>
         </main>
       </Router>
