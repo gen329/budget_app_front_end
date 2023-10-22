@@ -10,15 +10,17 @@ function App() {
     <div className='wrapper'>
       <Router>
         <Nav />
+        <main>
         <Routes>
-          <Route></Route>
+          <Route path="/" element={<Home />} />
+          <Route path="/transactions" element={<Index />} />
+          <Route path="/transactions/new" element={<New />} />
+          <Route path="/transactions/:index" element={<Show />} />
         </Routes>
-
+        </main>
       </Router>
-
     </div>
-
-  )
+  );
 }
 
 export default App;
