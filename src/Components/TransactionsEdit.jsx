@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParamas, useNavigate, Link } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 const API = import.meta.env.VITE_BASE_URL;
 
 
@@ -22,7 +22,7 @@ function TransactionsEdit() {
 
   useEffect(() => {
     fetch(`${API}/transactions/${index}`)
-    .then(response => response)
+    .then(response => response.json)
     .then(transaction => {
       console.log(transaction)
       setTransaction(transaction)
@@ -44,7 +44,7 @@ function TransactionsEdit() {
           alert(`${transaction.item_name} has been updated!`);
           navigate(`/transactions/${index}`)
         })
-        .catch((error) => console.error(err))
+        .catch((error) => console.error(error))
   }
   const handleSubmit = event => {
     event.preventDefault();
@@ -56,7 +56,7 @@ function TransactionsEdit() {
         <label htmlFor="name">Name:</label>
         <input
           id="name"
-          value={bookmark.item_name}
+          value={transaction.item_name}
           type="text"
           onChange={handleTextChange}
           placeholder="Name of Transaction"
