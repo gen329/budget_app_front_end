@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Transaction from "./Transaction";
 const API = import.meta.env.VITE_BASE_URL 
 
 function Transactions() {
@@ -7,7 +8,7 @@ function Transactions() {
     fetch(`${API}/transactions`) 
     .then((response) => response.json())
     .then( transactions => setTransactions(transactions))
-    .catch( error => console.error(error));
+    .catch( error => console.error(error, "ERROR!!!"));
   }, []);
   
   return(
@@ -23,7 +24,7 @@ function Transactions() {
         </thead>
         <tbody>
            {transactions.map((transaction, index) => {
-             return <Transactions key={index} transactions={transaction} index={index} />;
+             return <Transaction key={index} transactions={transaction} index={index} />;
             })}
         </tbody>
       </table>
