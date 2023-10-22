@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 
-import Nav from "./Components/NavBar";
+import Nav from "./Components/common/NavBar";
 import './App.css'
 
 function App() {
