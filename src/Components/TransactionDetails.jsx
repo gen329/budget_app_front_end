@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useParams, useNavigation } from "react";
+import { Link, useParams, useNavigation } from "react-router-dom";
 const API = import.meta.env.VITE_BASE_URL;
 
 function TransactionDetails() {
@@ -31,7 +31,7 @@ function TransactionDetails() {
   return (
     <article>
       <h3>
-        {transaction.isFavorite ? <span>⭐️</span> : null} {transaction.name}
+        {transaction.isFavorite ? <span>⭐️</span> : null} {transaction.id}
       </h3>
       <div className="showNavigation">
         <div>

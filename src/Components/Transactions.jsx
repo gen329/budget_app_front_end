@@ -8,7 +8,7 @@ function Transactions() {
     .then((response) => {
       return response.json();
     })
-    .then((responseJSON) => setTransactions(responseJSON))
+    .then((responseJSON) => setTransactions(resJSON))
     .catch((error) => console.error(error));
   }, []);
   
