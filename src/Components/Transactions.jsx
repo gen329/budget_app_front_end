@@ -5,9 +5,8 @@ function Transactions() {
   const [transactions, setTransactions] = useState([]);
   useEffect(() => {
     fetch(`${API}/transactions`) 
-    .then((res) => {
+    .then((response) => {
       return response.json();
-      // console.log(res.body);
     })
     .then((responseJSON) => setTransactions(responseJSON))
     .catch((error) => console.error(error));
