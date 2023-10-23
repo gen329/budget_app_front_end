@@ -9,16 +9,16 @@ function TransactionNewForm() {
     item_name: "",
     amount: 0,
     date: "",
-    transaction_from: "",
+    from: "",
     category: "",
   });
 
   const navigate = useNavigate();
 
-  // const handleTextChange = (event) => {
-  //   const { id } = event.target;
-  //   setTransaction((prevTransaction => ({ ...prevTransaction, [id]: value })));
-  // };
+  const handleTextChange = (event) => {
+    const { id } = event.target;
+    setTransaction((prevTransaction => ({ ...prevTransaction, [id]: event.target.value })));
+  };
 
   const addTransaction = async(transaction) => {
     try {
@@ -42,7 +42,8 @@ function TransactionNewForm() {
 
     const handleSubmit = (event) => {
       event.preventDefault();
-      addTransaction();
+      console.log(event)
+      addTransaction(transaction);
     };
     
     return (
@@ -53,7 +54,7 @@ function TransactionNewForm() {
       <input
         id="date"
         type="date"
-        // onChange={handleTextChange}
+        onChange={handleTextChange}
         placeholder="date"
         required
         />
@@ -63,7 +64,7 @@ function TransactionNewForm() {
         id="name"
         type="text"
         placeholder="name"
-        // onChange={handleTextChange}
+        onChange={handleTextChange}
         />
       <br />
       <label htmlFor="amount">Amount:</label>
@@ -71,16 +72,22 @@ function TransactionNewForm() {
         id="amount"
         type="number"
         placeholder="amount"
-        // onChange={handleTextChange}
+        onChange={handleTextChange}
         />
       <br />
       <label htmlFor="from">From:</label>
       <input
         id="from"
         type="text"
-        // onChange={handleTextChange}
+        onChange={handleTextChange}
         />
       <br />
+      <label htmlFor="category">Category:</label>
+      <input
+        id="category"
+        type="text"
+        onChange={handleTextChange}
+        />
       <input type="submit" />
     </form>
   </div>

@@ -22,7 +22,6 @@ function TransactionDetails() {
 
     fetch(`${API}/transactions/${index}`, httpOptions)
       .then((response) => {
-        console.log(response)
         alert("Transaction successfully deleted!");
         navigate("/transactions");
       })
@@ -30,15 +29,14 @@ function TransactionDetails() {
   };
   return (
     <article>
-      <h3>
-        {transaction.item_name}
-      </h3>
         <p>
+        Name: {transaction.name}  
+        <br />
         Amount: {transaction.amount}
         <br />
         Date: {transaction.date}
         <br />
-        From: {transaction.transaction_from}
+        From: {transaction.from}
         <br />
         Category: {transaction.category}
         </p>
