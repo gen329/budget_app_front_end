@@ -17,7 +17,7 @@ function Transactions() {
     .catch( error => console.error(error, "ERROR!!!"));
   }, []);
 
-  
+
   return(
     <div className="Transactions">
     <section>

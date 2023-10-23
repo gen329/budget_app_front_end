@@ -3,7 +3,7 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 import TransactionDetails from './TransactionDetails';
 const API = import.meta.env.VITE_BASE_URL
 
-function TransactionNewForm() {
+function TransactionNewForm({index}) {
   const [transaction, setTransaction] = useState({
     id: 0,
     item_name: "",
@@ -14,6 +14,7 @@ function TransactionNewForm() {
   });
 
   const navigate = useNavigate();
+
 
   const handleTextChange = (event) => {
     const { id } = event.target;
@@ -32,9 +33,11 @@ function TransactionNewForm() {
 
       const response = await fetch(`${API}/transactions`, httpOptions);
       if (!response.ok) { throw new Error("Network response failed!!") }
+      
       const data = await response.json();
+
+
       alert(" Transaction was successfully added to the budget!");
-      navigate('/transactions');
     } catch (error) {
       console.error(error);
     }
@@ -42,57 +45,32 @@ function TransactionNewForm() {
 
     const handleSubmit = (event) => {
       event.preventDefault();
-      console.log(event)
       addTransaction(transaction);
+      navigate(`/transactions/${index}`)
     };
-    
-    return (
-      <div className="New">
-    <form onSubmit={handleSubmit}>
 
-      <label htmlFor="date">Date:</label>
-      <input
-        id="date"
-        type="date"
-        onChange={handleTextChange}
-        placeholder="date"
-        required
-        />
-      <br />
-      <label htmlFor="name">Name:</label>
-      <input
-        id="name"
-        type="text"
-        placeholder="name"
-        onChange={handleTextChange}
-        />
-      <br />
-      <label htmlFor="amount">Amount:</label>
-      <input
-        id="amount"
-        type="number"
-        placeholder="amount"
-        onChange={handleTextChange}
-        />
-      <br />
-      <label htmlFor="from">From:</label>
-      <input
-        id="from"
-        type="text"
-        onChange={handleTextChange}
-        />
-      <br />
-      <label htmlFor="category">Category:</label>
-      <input
-        id="category"
-        type="text"
-        onChange={handleTextChange}
-        />
-      <input type="submit" />
-    </form>
-  </div>
-);
-};
-
+  return (
+    <div className="New">
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="date">Date:</label>
+        <input id="date" type="date" value={transaction.date} onChange={handleTextChange} placeholder="date" required />
+        <br />
+        <label htmlFor="name">Name:</label>
+        <input id="name" type="text" value={transaction.name} placeholder="name" onChange={handleTextChange} />
+        <br />
+        <label htmlFor="amount">Amount:</label>
+        <input id="amount" type="number" value={transaction.amount} placeholder="amount" onChange={handleTextChange} required />
+        <br />
+        <label htmlFor="from">From:</label>
+        <input id="from" type="text" value={transaction.from} placeholder="company name" onChange={handleTextChange} />
+        <br />
+        <label htmlFor="category">Category:</label>
+        <input id="category" type="text" value={transaction.category} onChange={handleTextChange} />
+        <br />
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  );
+}
 
 export default TransactionNewForm;
