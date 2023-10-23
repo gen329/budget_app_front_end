@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
-import { Link, useParams, useNavigation } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 const API = import.meta.env.VITE_BASE_URL;
 
 function TransactionDetails() {
   const [transaction, setTransaction] = useState([]);
   let { index } = useParams();
-  let navigate = useNavigation();
+  let navigate = useNavigate();
 
   useEffect(() => {
     fetch(`${API}/transactions/${index}`)
@@ -18,7 +18,7 @@ function TransactionDetails() {
   }, [index, navigate]);
 
   const handleDelete = () => {
-    const httpOptions = { "method" : "DELETE" }
+    const httpOptions = { "method": "DELETE" }
 
     fetch(`${API}/transactions/${index}`, httpOptions)
       .then((response) => {
@@ -31,24 +31,34 @@ function TransactionDetails() {
   return (
     <article>
       <h3>
-        {transaction.isFavorite ? <span>⭐️</span> : null} {transaction.id}
+        {transaction.item_name}
       </h3>
+        <p>
+        Amount: {transaction.amount}
+        <br />
+        Date: {transaction.date}
+        <br />
+        From: {transaction.transaction_from}
+        <br />
+        Category: {transaction.category}
+        </p>
+        <br />
       <div className="showNavigation">
         <div>
-          {" "}
+          <br />
           <Link to={`/transactions`}>
-            <button>back</button>
+            <button>BACK</button>
           </Link>
         </div>
         <div>
-          {" "}
-          <Link to ={`/transactions/${index}/edit`}>
-            <button>Edit</button>
+          <br />
+          <Link to={`/transactions/${index}/edit`}>
+            <button>EDIT</button>
           </Link>
         </div>
         <div>
-          {" "}
-          <button onClick={handleDelete}><Delete></Delete></button>
+          <br />
+          <button onClick={handleDelete}>DELETE</button>
         </div>
       </div>
     </article>

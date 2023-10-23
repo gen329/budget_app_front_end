@@ -15,10 +15,10 @@ function TransactionNewForm() {
 
   const navigate = useNavigate();
 
-  const handleTextChange = (event) => {
-    const { id, value } = event.target;
-    setTransaction((prevTransaction => ({ ...prevTransaction, [id]: value })));
-  };
+  // const handleTextChange = (event) => {
+  //   const { id } = event.target;
+  //   setTransaction((prevTransaction => ({ ...prevTransaction, [id]: value })));
+  // };
 
   const addTransaction = async(transaction) => {
     try {
@@ -52,9 +52,8 @@ function TransactionNewForm() {
       <label htmlFor="date">Date:</label>
       <input
         id="date"
-        value={transaction.date}
-        type="text"
-        onChange={handleTextChange}
+        type="date"
+        // onChange={handleTextChange}
         placeholder="date"
         required
         />
@@ -63,26 +62,23 @@ function TransactionNewForm() {
       <input
         id="name"
         type="text"
-        value={transaction.item_name}
         placeholder="name"
-        onChange={handleTextChange}
+        // onChange={handleTextChange}
         />
       <br />
       <label htmlFor="amount">Amount:</label>
       <input
         id="amount"
         type="number"
-        value={transaction.amount}
         placeholder="amount"
-        onChange={handleTextChange}
+        // onChange={handleTextChange}
         />
       <br />
       <label htmlFor="from">From:</label>
       <input
         id="from"
         type="text"
-        value={transaction.transaction_from}
-        onChange={handleTextChange}
+        // onChange={handleTextChange}
         />
       <br />
       <input type="submit" />

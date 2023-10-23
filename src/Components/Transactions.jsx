@@ -4,27 +4,27 @@ const API = import.meta.env.VITE_BASE_URL
 
 function Transactions() {
   const [transactions, setTransactions] = useState([]);
+
   useEffect(() => {
     fetch(`${API}/transactions`) 
-    .then((response) => response.json())
-    .then( transactions => setTransactions(transactions))
+    .then((response) => {
+      if ((!response.ok)) {
+        throw new Error('Network response failed!')
+      }
+     return response.json();
+    })
+    .then((transactions) => setTransactions(transactions))
     .catch( error => console.error(error, "ERROR!!!"));
   }, []);
+
   
   return(
     <div className="Transactions">
     <section>
       <table>
-        <thead>
-          <tr>
-            <th></th>
-            <th>Take me there</th>
-            <th>See this transaction</th>
-          </tr>
-        </thead>
         <tbody>
            {transactions.map((transaction, index) => {
-             return <Transaction key={index} transactions={transaction} index={index} />;
+             return <Transaction key={index} transaction={transaction} index={index} />;
             })}
         </tbody>
       </table>

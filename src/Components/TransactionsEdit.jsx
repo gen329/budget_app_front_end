@@ -53,15 +53,42 @@ function TransactionsEdit() {
   return (
     <div className="Edit">
       <form onSubmit={handleSubmit}>
-        <label htmlFor="name">Name:</label>
-        <input
-          id="name"
-          value={transaction.item_name}
-          type="text"
-          onChange={handleTextChange}
-          placeholder="Name of Transaction"
-          required
-          />
+       
+      <label htmlFor="date">Date:</label>
+      <input
+        id="date"
+        value={transaction.date}
+        type="text"
+        onChange={handleTextChange}
+        placeholder="date"
+        required
+        />
+      <br />
+      <label htmlFor="name">Name:</label>
+      <input
+        id="name"
+        type="text"
+        value={transaction.item_name}
+        placeholder="name"
+        onChange={handleTextChange}
+        />
+      <br />
+      <label htmlFor="amount">Amount:</label>
+      <input
+        id="amount"
+        type="number"
+        value={transaction.amount}
+        placeholder="amount"
+        onChange={handleTextChange}
+        />
+      <br />
+      <label htmlFor="from">From:</label>
+      <input
+        id="from"
+        type="text"
+        value={transaction.transaction_from}
+        onChange={handleTextChange}
+        />
           <input type="submit" />
       </form>
       <Link to={`/transactions/${index}`}>
