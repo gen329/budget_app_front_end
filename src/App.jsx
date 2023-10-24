@@ -9,7 +9,7 @@ import New from "./Pages/New";
 import Show from "./Pages/Show";
 import Edit from "./Pages/Edit";
 import TransactionNewForm from './Components/TransactionNewForm';
-
+import TransactionReceipt from './Pages/TransactionReceipt';
 
 function App() {
   return (
@@ -21,6 +21,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/transactions" element={<Index />} />
           <Route path="/transactions/new" element={<New />} />
+          <Route path="/transactions/receipt" element={<TransactionReceipt />} />
           <Route path="/transactions/:index" element={<Show />} />
           <Route path="/transactions/:index/edit" element={<Edit />} />
         </Routes>

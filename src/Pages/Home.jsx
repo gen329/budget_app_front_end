@@ -1,8 +1,8 @@
 function Home() {
+  
   return (
-    <div className="Home">
-      <h2>Welcome</h2>
-      <h3>Budget App</h3>
+    <div className="container">
+      <header className="header">Budget App</header>
       <h3>Bank Account Total:</h3>
     </div>
   );

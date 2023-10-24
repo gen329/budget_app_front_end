@@ -4,6 +4,7 @@ import TransactionDetails from './TransactionDetails';
 const API = import.meta.env.VITE_BASE_URL
 
 function TransactionNewForm({index}) {
+  console.log(API);
   const [transaction, setTransaction] = useState({
     id: 0,
     item_name: "",
@@ -14,7 +15,6 @@ function TransactionNewForm({index}) {
   });
 
   const navigate = useNavigate();
-
 
   const handleTextChange = (event) => {
     const { id } = event.target;
@@ -36,8 +36,8 @@ function TransactionNewForm({index}) {
       
       const data = await response.json();
 
-
       alert(" Transaction was successfully added to the budget!");
+      // navigate(`/transactions/${index}`)
     } catch (error) {
       console.error(error);
     }
@@ -46,7 +46,7 @@ function TransactionNewForm({index}) {
     const handleSubmit = (event) => {
       event.preventDefault();
       addTransaction(transaction);
-      navigate(`/transactions/${index}`)
+      navigate('/transactions/receipt');
     };
 
   return (
@@ -56,16 +56,16 @@ function TransactionNewForm({index}) {
         <input id="date" type="date" value={transaction.date} onChange={handleTextChange} placeholder="date" required />
         <br />
         <label htmlFor="name">Name:</label>
-        <input id="name" type="text" value={transaction.name} placeholder="name" onChange={handleTextChange} />
+        <input id="name" type="text" value={transaction.item_name} placeholder="name" onChange={handleTextChange} required/>
         <br />
         <label htmlFor="amount">Amount:</label>
         <input id="amount" type="number" value={transaction.amount} placeholder="amount" onChange={handleTextChange} required />
         <br />
         <label htmlFor="from">From:</label>
-        <input id="from" type="text" value={transaction.from} placeholder="company name" onChange={handleTextChange} />
+        <input id="from" type="text" value={transaction.from} placeholder="company name" onChange={handleTextChange} required/>
         <br />
         <label htmlFor="category">Category:</label>
-        <input id="category" type="text" value={transaction.category} onChange={handleTextChange} />
+        <input id="category" type="text" value={transaction.category} onChange={handleTextChange} required/>
         <br />
         <button type="submit">Submit</button>
       </form>

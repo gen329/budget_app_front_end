@@ -5,11 +5,13 @@ function Transaction({ transaction, index }) {
   return (
     <tr>
       <td>
-        <Link to={`/transactions/${index}`}>{transaction.name}
+        <Link to={`/transactions/${index}`}>
+        <br />
+         {transaction.date}
          {transaction.category} 
          {transaction.amount}
          {transaction.from}
-         {transaction.date}
+         {transaction.id}
          </Link>
       </td>
     </tr>
