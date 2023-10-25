@@ -1,30 +1,26 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 import Transactions from "../Components/Transactions";
 const API = import.meta.env.VITE_BASE_URL;
 
 function Index() {
-  const [data, setData] = useState([]);
   const [total, setTotal] = useState(0);
 
-  let { index } = useParams();
-
   useEffect(() => {
-    fetch(`${API}/transactions/${index}`)
+    fetch(`${API}/transactions`)
       .then((response) => response.json())
       .then((responseData) => {
-        setData(responseData);
+
+        let total = 0;
+        for (let i = 0; i < responseData.length; i++) {
+          total += Number(responseData[i].amount)
+        }
+        setTotal(total);
       })
       .catch((error) => {
         console.error("Error fetching transactions", error);
       });
-  }, [index]);
+  }, []);
 
-
-  useEffect(() => {
-    const transactionTotal = data.reduce((acc, obj) => acc + obj.value, 0);
-    setTotal(transactionTotal);
-  }, [data]);
 
   return (
     <div className="Index">
