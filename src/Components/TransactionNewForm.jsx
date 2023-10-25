@@ -37,7 +37,6 @@ function TransactionNewForm({index}) {
       const data = await response.json();
 
       alert(" Transaction was successfully added to the budget!");
-      // navigate(`/transactions/${index}`)
     } catch (error) {
       console.error(error);
     }
@@ -56,7 +55,7 @@ function TransactionNewForm({index}) {
         <input id="date" type="date" value={transaction.date} onChange={handleTextChange} placeholder="date" required />
         <br />
         <label htmlFor="name">Name:</label>
-        <input id="name" type="text" value={transaction.item_name} placeholder="name" onChange={handleTextChange} required/>
+        <input id="name" type="text" value={transaction.name} placeholder="name" onChange={handleTextChange} required/>
         <br />
         <label htmlFor="amount">Amount:</label>
         <input id="amount" type="number" value={transaction.amount} placeholder="amount" onChange={handleTextChange} required />
