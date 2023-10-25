@@ -18,7 +18,6 @@ const TransactionReceipt = () => {
   useEffect(() => {
     fetch(`${API}/transactions/`)
       .then(response => {
-        console.log(response);
         if (!response.ok) {
           throw new Erorr("Response was unsuccessful")
         }
@@ -30,7 +29,7 @@ const TransactionReceipt = () => {
       })
       .catch(() => navigate("/notfound"));
   }, [index, navigate]);
-  console.log(transaction[transaction.length - 1]);
+
   return (
     <article className="receipt">
       <p>

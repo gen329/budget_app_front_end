@@ -5,31 +5,26 @@ const API = import.meta.env.VITE_BASE_URL;
 
 function Index() {
   const [data, setData] = useState([]);
-  const [newInput, setInput] = useState(0);
   const [total, setTotal] = useState(0);
 
-let { index } = useParams(); 
+  let { index } = useParams();
 
   useEffect(() => {
     fetch(`${API}/transactions/${index}`)
-    .then(response => {
-      setData(response.Data);
-      const transactionTotal = response.data.reduce((acc, obj) => acc + obj.value, 0);
-      setTotal(transactionTotal);
-    })
-    .catch(error => {
-      console.error("Error fetching transactions", error);
-    });
-  }, []);
+      .then((response) => response.json())
+      .then((responseData) => {
+        setData(responseData);
+      })
+      .catch((error) => {
+        console.error("Error fetching transactions", error);
+      });
+  }, [index]);
 
-  const handleNewInput = (event) => {
-    const inputValue = parseInt(event.target.value);
-    setInput(inputValue);
-  };
 
-useEffect(() => {
-  setTotal(total + newInput);
-}, [newInput]);
+  useEffect(() => {
+    const transactionTotal = data.reduce((acc, obj) => acc + obj.value, 0);
+    setTotal(transactionTotal);
+  }, [data]);
 
   return (
     <div className="Index">

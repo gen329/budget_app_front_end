@@ -23,7 +23,6 @@ function TransactionsEdit() {
     fetch(`${API}/transactions/${index}`)
       .then((response) => response.json)
       .then((transaction) => {
-        console.log(transaction);
         setTransaction(transaction);
       })
       .catch(() => navigate("/not-found"));

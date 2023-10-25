@@ -4,7 +4,6 @@ import TransactionDetails from './TransactionDetails';
 const API = import.meta.env.VITE_BASE_URL
 
 function TransactionNewForm({ index }) {
-  console.log(API);
   const [transaction, setTransaction] = useState({
     id: 0,
     item_name: "",
