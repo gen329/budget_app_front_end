@@ -6,19 +6,19 @@ function Transaction({ transaction, index }) {
     <tr className="alltransactions">
       <td>
         <Link to={`/transactions/${index}`}>
-        <br />
-         ID:{transaction.id}
-         <br />
-         DATE:{transaction.date}
-         <br />
-         NAME:{transaction.item_name}
-         <br />
-         AMOUNT:{transaction.amount}
-         <br />
-         FROM:{transaction.transaction_from}
-         <br />
-         CATEGORY:{transaction.category} 
-         </Link>
+          <br />
+          ID:{transaction.id}
+          <br />
+          DATE:{transaction.date}
+          <br />
+          NAME:{transaction.item_name}
+          <br />
+          AMOUNT:{transaction.amount}
+          <br />
+          FROM:{transaction.transaction_from}
+          <br />
+          CATEGORY:{transaction.category}
+        </Link>
       </td>
     </tr>
   );

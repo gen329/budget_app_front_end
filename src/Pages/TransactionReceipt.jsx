@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useParams, useNavigate } from "react-router-dom";
 const API = import.meta.env.VITE_BASE_URL;
 
@@ -25,12 +25,12 @@ const TransactionReceipt = () => {
         return response.json();
       })
       .then(transaction => {
-        setTransaction(transaction[transaction.length -1]);
+        setTransaction(transaction[transaction.length - 1]);
         setLoading(false);
       })
       .catch(() => navigate("/notfound"));
   }, [index, navigate]);
-console.log(transaction[transaction.length -1]);
+  console.log(transaction[transaction.length - 1]);
   return (
     <article className="receipt">
       <p>

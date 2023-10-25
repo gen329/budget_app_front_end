@@ -8,7 +8,7 @@ function TransactionDetails() {
     amount: 0,
     date: "",
     from: "",
-    category: ""
+    category: "",
   });
   let { index } = useParams();
   let navigate = useNavigate();
@@ -16,13 +16,13 @@ function TransactionDetails() {
 
   useEffect(() => {
     fetch(`${API}/transactions/${index}`)
-      .then(response => {
+      .then((response) => {
         if (!response.ok) {
-          throw new Erorr("Response was unsuccessful")
+          throw new Erorr("Response was unsuccessful");
         }
         return response.json();
       })
-      .then(transaction => {
+      .then((transaction) => {
         setTransaction(transaction);
         setLoading(false);
       })
@@ -30,7 +30,7 @@ function TransactionDetails() {
   }, [index, navigate]);
 
   const handleDelete = () => {
-    const httpOptions = { "method": "DELETE" }
+    const httpOptions = { method: "DELETE" };
 
     fetch(`${API}/transactions/${index}`, httpOptions)
       .then((response) => {
@@ -38,7 +38,7 @@ function TransactionDetails() {
           alert("Transaction successfully deleted!");
           navigate("/transactions");
         } else {
-          throw new Error("Response was unsuccessful")
+          throw new Error("Response was unsuccessful");
         }
       })
       .catch((err) => console.err(err));
@@ -82,7 +82,5 @@ function TransactionDetails() {
     </article>
   );
 }
-
-
 
 export default TransactionDetails;
