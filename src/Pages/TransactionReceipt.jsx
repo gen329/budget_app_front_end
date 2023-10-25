@@ -32,7 +32,7 @@ const TransactionReceipt = () => {
   }, [index, navigate]);
 console.log(transaction[transaction.length -1]);
   return (
-    <article>
+    <article className="receipt">
       <p>
         Name: {transaction.name}
         <br />
@@ -60,7 +60,7 @@ console.log(transaction[transaction.length -1]);
         </div>
         <div>
           <br />
-          {/* <button onClick={handleDelete}>DELETE</button> */}
+          <button onClick={handleDelete}>DELETE</button>
         </div>
       </div>
     </article>

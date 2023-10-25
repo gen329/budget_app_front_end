@@ -3,15 +3,21 @@ import { Link } from "react-router-dom";
 
 function Transaction({ transaction, index }) {
   return (
-    <tr>
+    <tr className="alltransactions">
       <td>
         <Link to={`/transactions/${index}`}>
         <br />
-         {transaction.date}
-         {transaction.category} 
-         {transaction.amount}
-         {transaction.from}
-         {transaction.id}
+         ID:{transaction.id}
+         <br />
+         DATE:{transaction.date}
+         <br />
+         NAME:{transaction.item_name}
+         <br />
+         AMOUNT:{transaction.amount}
+         <br />
+         FROM:{transaction.transaction_from}
+         <br />
+         CATEGORY:{transaction.category} 
          </Link>
       </td>
     </tr>

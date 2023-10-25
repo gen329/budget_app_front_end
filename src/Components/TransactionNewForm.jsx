@@ -49,7 +49,7 @@ function TransactionNewForm({index}) {
     };
 
   return (
-    <div className="New">
+    <div className="newtransaction">
       <form onSubmit={handleSubmit}>
         <label htmlFor="date">Date:</label>
         <input id="date" type="date" value={transaction.date} onChange={handleTextChange} placeholder="date" required />
